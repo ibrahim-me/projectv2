@@ -1,4 +1,4 @@
-# project 
-this was sent through local machine
+# Quantified Self 
+ Vuejs for UI 
+ 
 
-this is in new branch 
