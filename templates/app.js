@@ -27,7 +27,7 @@ const tracker_data = Vue.component('tracker_data', {
 				<a href='' type="button" class="btn btn-outline-dark">Delete</a>
 			</div>
 		</div>	
-    </div>
+    </div>   
     </div>
   `
     
