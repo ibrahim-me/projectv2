@@ -106,9 +106,64 @@ const new_tracker=Vue.component('new_tracker', {
   `
 })
 
+
+const new_log = Vue.component('new_log',
+{
+  props:['tid','ttype','options'],
+  data: function(){
+    return{
+      value: undefined,
+      time:undefined,
+      notes:undefined,
+      mood_flag:false,
+      sleep_flag: false,
+      temp_flag:false,
+      run_flag:true 
+    }
+  }, 
+  template:
+  `
+  `
+
+
+}) 
+
+
+
+const view_tracker = Vue.component('view_tracker',
+{
+  props:[],
+  data: function(){
+    return{
+    }
+  } ,
+  template:
+  `
+  `
+}) 
+
+
+const view_logs = Vue.component('view_logs',
+{
+  props:[],
+  data: function(){
+    return{
+    }
+  } ,
+  template:
+  `
+  `
+}) 
+
+
 const routes= [
   {path:'/',  component: dashboard, name:'dashboard'},
-  {path:'/newtracker', component: new_tracker, name:'new_tracker'} 
+  {path:'/newtracker', component: new_tracker, name:'new_tracker'}, 
+  {path:'/newlog',component:new_log,name:'new_log'},
+  {path:'/viewtracker',component:view_tracker,name:'view_tracker'},
+  {path:'/viewlogs',component:view_logs,name:"view_logs"}
+
+  
 ]
 
 
