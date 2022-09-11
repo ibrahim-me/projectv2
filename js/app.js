@@ -15,23 +15,24 @@ const dashboard = Vue.component('dashboard', {
   </div> 
     <div class="row py-2 ">
 				<div class="col-3 ">
-				<a href=""> Tracker_name </a>
+				<a  @click="viewlogs"> Tracker_name </a>
 			</div>
 			<div class="col-3 ">
 				value
 			</div>	
 			
 			<div class="col-1 ">
-				<a href='' type="button" class="btn btn-outline-dark">Edit</a>
+				<a @click="addlog" type="button" class="btn btn-outline-dark">Edit</a>
 			</div>	
 			<div class="col-2 ">
-				<a href='' type="button" class="btn btn-outline-dark">Delete</a>
+				<a @click="" type="button" class="btn btn-outline-dark">Delete</a>
 			</div>
 		</div>	
     </div>  
     <div class="row gy-2 " style="width: 50rem; margin: auto; padding: 20px;">
 		<div class="col-2 ">
 			<a @click="addtracker" type="button" class="btn btn-light">Add new tracker</a>
+      
 		</div>	
 	</div> 
     </div>
@@ -39,6 +40,12 @@ const dashboard = Vue.component('dashboard', {
   ,methods:{
       addtracker:function(){
         this.$router.push({name:'new_tracker'})
+      },
+      addlog:function(){
+        this.$router.push({name:'new_log'})
+      },
+      viewlogs:function(){
+        this.$router.push({name:'view_logs'})
       }
     } 
 })
@@ -123,6 +130,64 @@ const new_log = Vue.component('new_log',
   }, 
   template:
   `
+<div>
+<div class="container">
+
+<div class="row py-2">
+  <div class="col">
+    <h2>Edit Tracker</h2>
+  </div>
+</div>
+
+<div class="row py-4">
+  <div class="col-1">
+    <p class="fs-6">Tracker Name</p>
+  </div>
+  <div class="col-2">
+    <div class="col-md-6">
+        tracker_name
+      </div>
+  </div>
+  <div class="col">
+    <a href=''>   change name</a>
+  </div>
+</div>
+
+<form action="" method="POST" id="create_tracker">
+
+<div class="row py-4">
+  <div class="col-1">
+    <p class="fs-6">Value</p>
+  </div>
+  <div class="col">
+    <div class="col-md-3">
+        <input class="form-control" name="temp" type="number" placeholder="enter value" aria-label="default input example" required>
+      </div>
+  </div>
+</div>
+<div class="row py-4">
+  <div class="col-1">
+    <p class="fs-6">Time</p>
+  </div>
+  <div class="col">
+    <div class="col-md-3 ">
+      <div class="md-form mx-0 my-0">
+          <input type="time" id="currentTime" name="timestamp" class="form-control" value=4:20>
+          <label for="inputMDEx1">Choose your time</label>
+      </div>
+      </div>
+  </div>
+</div>
+<div class="row py-4 ">
+  <div class="col-6">
+    <button type="submit" class="btn btn-success">Log it!!!</button>
+  </div>
+</div>
+</form>
+
+
+</div>
+</div>
   `
 
 
@@ -130,17 +195,6 @@ const new_log = Vue.component('new_log',
 
 
 
-const view_tracker = Vue.component('view_tracker',
-{
-  props:[],
-  data: function(){
-    return{
-    }
-  } ,
-  template:
-  `
-  `
-}) 
 
 
 const view_logs = Vue.component('view_logs',
@@ -152,6 +206,57 @@ const view_logs = Vue.component('view_logs',
   } ,
   template:
   `
+  <div class="container">
+	<div class="row py-4  ">
+		<div class="col-10 " >
+			<h1 class="display-2">Tracker Details</h1>
+		</div>
+
+	</div>
+	
+	<div class="row py-4">
+		<div class="col-1">
+			<p class="fs-6">Tracker Name</p>
+		</div>
+		<div class="col-2">
+			<div class="col-md-6">
+    			tracker_name
+  			</div>
+		</div>
+	</div>
+
+	<div class="card" style="width: 50rem; margin: auto; padding: 20px;  ">
+		<div class="row ">
+			<div class="col-3 ">
+				<h5 class="display-7">Value</h5>
+			</div>
+			<div class="col ">
+				<h5 class="display-7">Time</h5>
+			</div>	
+		</div> 
+		
+		<div class="row py-2 ">
+				<div class="col-3 ">
+				data_value
+			</div>
+			<div class="col-3 ">
+				data_time
+			</div>	
+			
+			<div class="col-1 ">
+				<a  type="button" class="btn btn-outline-dark">Edit</a>
+			</div>	
+			<div class="col-2 ">
+				<a  type="button" class="btn btn-outline-dark">Delete</a>
+			</div>
+		</div>	
+	
+	</div> 
+	<div style="width: 50rem; margin: auto; padding: 20px;  ">
+		<img src="" width="650" height="500">
+	</div>
+
+</div>
   `
 }) 
 
@@ -160,7 +265,6 @@ const routes= [
   {path:'/',  component: dashboard, name:'dashboard'},
   {path:'/newtracker', component: new_tracker, name:'new_tracker'}, 
   {path:'/newlog',component:new_log,name:'new_log'},
-  {path:'/viewtracker',component:view_tracker,name:'view_tracker'},
   {path:'/viewlogs',component:view_logs,name:"view_logs"}
 
   
